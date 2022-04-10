@@ -7,7 +7,7 @@ class SearchBar extends Component {
     super(props);
     this.state = {
       value: "",
-      warning: false
+      warning: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -21,7 +21,10 @@ class SearchBar extends Component {
   sendValueToParent(event) {
     event.preventDefault();
     // Check if the input field has been submitted empty or if it contains numbers
-    if (this.state.value.trim() === "" || this.state.value.match(/\d+/g) !== null) {
+    if (
+      this.state.value.trim() === "" ||
+      this.state.value.match(/\d+/g) !== null
+    ) {
       this.setState({ warning: true });
     } else {
       this.props.callBackFromParent(this.state.value);
